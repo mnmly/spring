@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <script type="text/javascript" src='build/build.js'></script>
+    <script type="text/javascript" charset="utf-8">
+
+      var raf = require('component-raf');
+      var remap = require('mnmly-remap');
+      var Spring = require('spring');
+      var spring = new Spring({ velocity: 0.1, tension: 300, friction: 10 });
+      var start = {x: 0, y: 0};
+      var target = {x: 0, y: 0 };
+      var current = {x: 0, y: 0};
+      var center = {x: window.innerWidth / 2, y: window.innerHeight / 2};
+      var box = document.createElement('div');
+      var point = document.createElement('div');
+
+      target.x = center.x;
+      target.y = center.y;
+
+      box.style.width = box.style.height = '100px';
+      box.style.backgroundColor = 'black';
+      box.style.position = 'absolute';
+      box.style.borderRadius = '3px';
+      box.style.top = box.style.left = '-50px';
+      document.body.appendChild(box);
+      translate(box, center);
+
+      point.style.width = point.style.height = '6px';
+      point.style.backgroundColor = 'hsla(342, 100%, 50%, 0.8)';
+      point.style.border = '1px solid hsla(342, 100%, 50%, 1)';
+      point.style.top = point.style.left = '-3px';
+      point.style.position = 'absolute';
+      point.style.borderRadius = '50%';
+      document.body.appendChild(point);
+      translate(point, center);
+
+      function step(){
+
+        var p = spring.step();
+        var x = remap(p, 0, 100, start.x, target.x);
+        var y = remap(p, 0, 100, start.y, target.y);
+        current.x = x;
+        current.y = y;
+        translate(box, current);
+        raf(step)
+      }
+
+      function translate(el, p) {
+        el.style.transform = 
+        el.style.webkitTransform = 'translate3d(' + p.x + 'px, ' + p.y + 'px, 0)';
+      }
+
+      step();
+
+      window.addEventListener('mousedown', function(e){
+        target.x = e.pageX;
+        target.y = e.pageY;
+        start.x = current.x;
+        start.y = current.y;
+        translate(point, target);
+        spring.reset();
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "spring",
+  "version": "0.0.1",
+  "repo": "mnmly/spring",
+  "description": "Spring utility from Framer.js",
+  "keywords": ["spring", "animation", "interaction"],
+  "dependencies": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "development": {
+    "dependencies": {
+      "mnmly/remap": "*",
+      "component/raf": "*"
+    }
+  }
+}
