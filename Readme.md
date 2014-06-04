@@ -1,7 +1,7 @@
 
 # spring
 
-  Sometimes you want to use awesome [Framer.js](http://framerjs.com)s' Spring Animation outside of Framer.
+  Sometimes you want to use awesome [Framer.js](http://framerjs.com) Spring Animation outside of Framer.
 
   ![](http://c.mnmly.com/VtzI/spring.gif)
 
