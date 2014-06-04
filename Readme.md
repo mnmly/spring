@@ -20,6 +20,7 @@
 
 var Spring = require('spring');
 var raf = require('raf');
+var spring = new Spring({ velocity: 0.1, tension: 300, friction: 10 });
 var box = document.getElementById('box');
 var remap = require('mnmly-remap');
 var target = {x: 200, y: 200};
