@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+  </head>
   <body>
     <script type="text/javascript" src='build/build.js'></script>
     <script type="text/javascript" charset="utf-8">
@@ -18,18 +21,18 @@
       target.x = center.x;
       target.y = center.y;
 
-      box.style.width = box.style.height = '100px';
+      box.style.width = box.style.height = '50px';
       box.style.backgroundColor = 'black';
       box.style.position = 'absolute';
       box.style.borderRadius = '3px';
-      box.style.top = box.style.left = '-50px';
+      box.style.top = box.style.left = '-25px';
       document.body.appendChild(box);
       translate(box, center);
 
       point.style.width = point.style.height = '6px';
       point.style.backgroundColor = 'hsla(342, 100%, 50%, 0.8)';
       point.style.border = '1px solid hsla(342, 100%, 50%, 1)';
-      point.style.top = point.style.left = '-3px';
+      point.style.top = point.style.left = '-4px';
       point.style.position = 'absolute';
       point.style.borderRadius = '50%';
       document.body.appendChild(point);
@@ -52,15 +55,15 @@
       }
 
       step();
-
-      window.addEventListener('mousedown', function(e){
-        target.x = e.pageX;
-        target.y = e.pageY;
+      
+      window.addEventListener('ontouchstart' in window ? 'touchend' : 'mousedown', function(e){
+        target.x = e.changedTouches ? e.changedTouches[0].pageX : e.pageX;
+        target.y = e.changedTouches ? e.changedTouches[0].pageY : e.pageY;
         start.x = current.x;
         start.y = current.y;
         translate(point, target);
         spring.reset();
-      });
+      }, false);
 
     </script>
   </body>

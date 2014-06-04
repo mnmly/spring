@@ -1,7 +1,7 @@
 
 # spring
 
-  Sometimes you want to use awesome [Framer.js](http://framerjs.com)s' Spring Animation outside of Framer.
+  Sometimes you want to use awesome [Framer.js](http://framerjs.com) Spring Animation outside of Framer.
 
   ![](http://c.mnmly.com/VtzI/spring.gif)
 
@@ -18,10 +18,13 @@
 ## Example
 ```javascript
 
-var Spring = require('spring');
-var box = document.getElementById('box');
+var raf = require('raf');
 var remap = require('mnmly-remap');
+var Spring = require('spring');
+
+var box = document.getElementById('box');
 var target = {x: 200, y: 200};
+var spring = new Spring({ velocity: 0.1, tension: 300, friction: 10 }); // Create spring instance
 
 function step(){
 
