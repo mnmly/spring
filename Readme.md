@@ -19,6 +19,7 @@
 ```javascript
 
 var Spring = require('spring');
+var raf = require('raf');
 var box = document.getElementById('box');
 var remap = require('mnmly-remap');
 var target = {x: 200, y: 200};
